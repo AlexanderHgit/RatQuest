@@ -769,9 +769,7 @@ end
 
 function hitmob(atkx,atky,defm,dmg,push)
 
-  if push != 0 then
- pushmob(atkx,atky,defm,push)
-  end
+
  
  --add curse/bless
  if defm.bless<0 then
@@ -791,7 +789,9 @@ function hitmob(atkx,atky,defm,dmg,push)
  addfloat("-"..dmg,defm.x*8,defm.y*8,9)
  
  shake=defm==p_mob and 0.08 or 0.04
- 
+ if push != 0 then
+  pushmob(atkx,atky,defm,push)
+   end
  if defm.hp<=0 then
   if defm!=p_mob then 
    st_kills+=1 

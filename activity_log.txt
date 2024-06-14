@@ -227,3 +227,89 @@
  
 2024-06-03 18:37:23 c:/Users/xande/OneDrive/Documents/GitHub/RatQuest/rat_quest.p8
  rrrrrrrrr_____rrrrrrrrrriirrrrrrrrrrrrrrrrrrcrrrccc.........c.......c
+2024-06-12 17:20:38 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:20:39 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:20:39 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rr__r__
+2024-06-12 17:21:05 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrrr_______rrrrr__rrr
+2024-06-12 17:34:30 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:34:44 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrr
+2024-06-12 17:35:45 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrr
+2024-06-12 17:36:08 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ r__rrrrr__r
+2024-06-12 17:38:08 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ ric........rric.........
+2024-06-12 17:38:47 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:39:36 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:40:41 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rii.........i
+2024-06-12 17:42:04 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:42:31 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:43:31 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:43:35 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ r_r__rricc.........rriii.........rri..i.........ri.i.......iii.........
+2024-06-12 17:43:44 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:44:52 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrr
+2024-06-12 17:47:27 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rri.i..i.........i.........rrrr_____
+2024-06-12 17:51:02 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ r
+2024-06-12 17:51:11 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ r_______rrrrr
+2024-06-12 17:52:11 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 17:53:47 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrr
+2024-06-12 18:19:25 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 18:20:23 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rri.ii........r_rrrrr_________
+2024-06-12 18:20:39 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrrrr_________r
+2024-06-12 18:45:40 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrr
+2024-06-12 18:55:49 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 18:56:29 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 18:58:23 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrr
+2024-06-12 18:59:02 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rr
+2024-06-12 18:59:55 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrr
+2024-06-12 19:00:56 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrr_riic.........r_rrrrr_________
+2024-06-12 21:03:08 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:04:39 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrr
+2024-06-12 21:04:58 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrrrr_________
+2024-06-12 21:05:58 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:08:07 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:09:09 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:09:51 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rr
+2024-06-12 21:10:14 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:11:02 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ 
+2024-06-12 21:11:53 c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+ rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr_rrrr_r__rr_________r

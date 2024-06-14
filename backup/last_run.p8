@@ -5,6 +5,7 @@ function _init()
  debug={}
 
  particles={}
+ smoke={}
  p_colors = {5,6,7,10,9,5}
  for i=1,200 do
   add(particles, {
@@ -17,6 +18,7 @@ function _init()
    alive=false
   })
 end
+
  t=0
  shake=0
  saved_map={}
@@ -81,29 +83,48 @@ function _draw()
  _drw()
  drawind()
  drawlogo()
+ drawExplode()
+ drawSmoke()
  --fadeperc=0
  checkfade()
  --★
  cursor(4,4)
  color(8)
- for part in all(particles) do
-  if part.alive then
-   -- color based on size
-   local fraction_of_r = part.r_i / #p_colors
-   local p_color = flr(part.r * fraction_of_r)+1
-   circfill(
-    part.x,
-    part.y,
-    part.r,
-    p_colors[p_color]
-   )
-  end
-end
+
  for txt in all(debug) do
   print(txt)
  end
 end
-
+function drawExplode()
+  for part in all(particles) do
+    if part.alive then
+     -- color based on size
+     local fraction_of_r = part.r_i / #p_colors
+     local p_color = flr(part.r * fraction_of_r)+1
+     circfill(
+      part.x,
+      part.y,
+      part.r,
+      p_colors[p_color]
+     )
+    end
+  end
+end
+function drawSmoke()
+  for p in all(smoke) do
+		p.x+=p.dx*0.2
+		p.y+=p.dy*0.05
+		p.act-=1
+		if p.act<45 then p.rad=4 end
+		if p.act<30 then p.rad=3 end
+		if p.act<15 then p.rad=2 end
+		if p.act<5 then p.rad=1 end
+		if p.act<-20 then
+			del(smoke,p)
+		end
+    circfill(p.x,p.y,p.rad,p.clr)
+	end
+end
 function startgame(relod)
  poke(0x3101,194)
  music(0)
@@ -484,7 +505,15 @@ function explodeEffect(x,y,r,num_particles)
    end
   end
  end
- 
+ function smokeEffect(x,y)
+  local p_count = 0
+  for i=1,5 do
+    add(smoke,{x=x,y=y,
+      dx=1,dy=rnd(2)-1,
+      rad=2,act=10,
+      clr=rnd({5,6,7,13})})
+    end
+ end
 function dofade()
  local p,kmax,col,k=flr(mid(0,fadeperc,1)*100)
  for j=1,15 do
@@ -1492,6 +1521,7 @@ end
 for i =0,dist-1	do
   defm.x+=px
   defm.y+=py
+  smokeEffect((defm.x*8),(defm.y*8)+8)
   printh("stats: "..px..","..py,"debugs")
 	tile_effect(defm.x,defm.y,defm)
 	end

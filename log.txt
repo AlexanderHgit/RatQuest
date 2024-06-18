@@ -13,7 +13,7 @@
 [000000]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
 [000000]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
 [000000]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-[000000]     11 sessions 78 // number of times program has been run
+[000000]     11 sessions 230 // number of times program has been run
 [000000]     12 rmb_key 0 // 0 for none  226 for LALT
 [000000]     13 desktop_path 
 [000000]     14 read_controllers_in_background 0
@@ -41,58 +41,58 @@
 [000000]     36 record_activity_log 1
 [000000]     37 allow_function_keys 1
 [000000]     38 check_for_cart_updates 1
-[000000]     39 auto_hide_mouse_cursor 5
-[000000]     40 aggressive_backups 0
-[000000]     41 periodic_backups 20
-[000000]     42 transform_screen 0
-[000000]     43 gfx_grid_lines 0
-[000000]   
+[000001]     39 auto_hide_mouse_cursor 5
+[000001]     40 aggressive_backups 0
+[000001]     41 periodic_backups 20
+[000001]     42 transform_screen 0
+[000001]     43 gfx_grid_lines 0
+[000001]   
 [000001]   codo_system_init
-[000456]   Compiled against SDL version: 2.0.2
-[000456]   Linked against SDL version:   2.0.9
-[000456]   Current video driver: windows
-[000456]   codo_reset_timer
-[000456]   codo_gui_init
-[000456]   codo_keys_init
-[000456]   codo_text_init
-[000457]   codo_video_init
-[000457]   codo_mouse_init
-[000457]   codo_joystick_init
-[000458]   Reading controller mappings: c:/Users/xande/Documents/OpenAIGym/RatQuest/sdl_controllers.txt
-[000458]   searching for joysticks
-[000458]     found 0 joysticks
-[000458]   ok
-[000458] ok
-[000472] codo_load_pod: C:/Users/xande/OneDrive/Documents/pico8/pico-8/pico8.dat ok 
-[000477] codo_set_screen 128 128 8 100
-[000477]  window size: 640 540
-[000842]   setting filter to nearest (screen_mode 0  back page width: 128)
+[000403]   Compiled against SDL version: 2.0.2
+[000403]   Linked against SDL version:   2.0.9
+[000403]   Current video driver: windows
+[000404]   codo_reset_timer
+[000404]   codo_gui_init
+[000404]   codo_keys_init
+[000404]   codo_text_init
+[000404]   codo_video_init
+[000404]   codo_mouse_init
+[000404]   codo_joystick_init
+[000405]   Reading controller mappings: c:/Users/xande/Documents/OpenAIGym/RatQuest/sdl_controllers.txt
+[000405]   searching for joysticks
+[000405]     found 0 joysticks
+[000405]   ok
+[000405] ok
+[000417] codo_load_pod: C:/Users/xande/OneDrive/Documents/pico8/pico-8/pico8.dat ok 
+[000421] codo_set_screen 128 128 8 100
+[000421]  window size: 640 540
+[000712]   setting filter to nearest (screen_mode 0  back page width: 128)
   renderer direct3d:
    flags: 0x0000000E ( |  | )
    texture formats (3): ARGB8888, YV12, IYUV
    max texture size: 16384x16384
-[000846]  desktop size: 1920 1080
-[000846] ok
-[000848] codo_sound_init mix_buffer_size: 1024
-[000848] codo_sound_init
-[000848] SDL_INIT_AUDIO ok
-[000878] SDL_OpenAudio ok
-[000878]  freq:22050
+[000715]  desktop size: 1920 1080
+[000715] ok
+[000718] codo_sound_init mix_buffer_size: 1024
+[000718] codo_sound_init
+[000718] SDL_INIT_AUDIO ok
+[000746] SDL_OpenAudio ok
+[000746]  freq:22050
  channels:1
-[000878] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
-[000878] Current audio driver: wasapi
-[000879] splore_init
-[000879] could not load favourites file: c:/Users/xande/Documents/OpenAIGym/RatQuest/favourites.txt
-[002704] loading c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
-[004399] run_cart current_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_cart_lid: 
-[324151] window closed (14)
-[324151] codo_exit
-[324151]   cmusic_stop
-[324151]   codo_main_exit
-[324153]   codo_config_save
-[324153]   codo_sound_exit
-[324153]   codo_video_exit
-[324164]   codo_joystick_exit
-[324165]   codo_system_exit
-[324165]   codo_items_created: 1356
-[324165] ok
+[000746] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[000746] Current audio driver: wasapi
+[000746] splore_init
+[000746] could not load favourites file: c:/Users/xande/Documents/OpenAIGym/RatQuest/favourites.txt
+[002567] loading c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+[004269] run_cart current_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_cart_lid: 
+[230562] window closed (14)
+[230562] codo_exit
+[230562]   cmusic_stop
+[230562]   codo_main_exit
+[230564]   codo_config_save
+[230564]   codo_sound_exit
+[230564]   codo_video_exit
+[230597]   codo_joystick_exit
+[230597]   codo_system_exit
+[230597]   codo_items_created: 1358
+[230597] ok

@@ -13,7 +13,7 @@
 [000000]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
 [000000]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
 [000000]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
-[000000]     11 sessions 297 // number of times program has been run
+[000000]     11 sessions 324 // number of times program has been run
 [000000]     12 rmb_key 0 // 0 for none  226 for LALT
 [000000]     13 desktop_path 
 [000000]     14 read_controllers_in_background 0
@@ -44,44 +44,55 @@
 [000000]     39 auto_hide_mouse_cursor 5
 [000000]     40 aggressive_backups 0
 [000000]     41 periodic_backups 20
-[000000]     42 transform_screen 0
-[000000]     43 gfx_grid_lines 0
-[000000]   
+[000001]     42 transform_screen 0
+[000001]     43 gfx_grid_lines 0
+[000001]   
 [000001]   codo_system_init
-[000432]   Compiled against SDL version: 2.0.2
-[000432]   Linked against SDL version:   2.0.9
-[000432]   Current video driver: windows
-[000432]   codo_reset_timer
-[000432]   codo_gui_init
-[000432]   codo_keys_init
-[000432]   codo_text_init
-[000433]   codo_video_init
-[000433]   codo_mouse_init
-[000433]   codo_joystick_init
-[000434]   Reading controller mappings: c:/Users/xande/Documents/OpenAIGym/RatQuest/sdl_controllers.txt
-[000434]   searching for joysticks
-[000434]     found 0 joysticks
-[000434]   ok
-[000434] ok
-[000448] codo_load_pod: C:/Users/xande/OneDrive/Documents/pico8/pico-8/pico8.dat ok 
-[000453] codo_set_screen 128 128 8 100
-[000453]  window size: 640 540
-[000818]   setting filter to nearest (screen_mode 0  back page width: 128)
+[000460]   Compiled against SDL version: 2.0.2
+[000460]   Linked against SDL version:   2.0.9
+[000460]   Current video driver: windows
+[000460]   codo_reset_timer
+[000460]   codo_gui_init
+[000460]   codo_keys_init
+[000460]   codo_text_init
+[000460]   codo_video_init
+[000460]   codo_mouse_init
+[000460]   codo_joystick_init
+[000461]   Reading controller mappings: c:/Users/xande/Documents/OpenAIGym/RatQuest/sdl_controllers.txt
+[000462]   searching for joysticks
+[000462]     found 0 joysticks
+[000462]   ok
+[000462] ok
+[000474] codo_load_pod: C:/Users/xande/OneDrive/Documents/pico8/pico-8/pico8.dat ok 
+[000478] codo_set_screen 128 128 8 100
+[000478]  window size: 640 540
+[000826]   setting filter to nearest (screen_mode 0  back page width: 128)
   renderer direct3d:
    flags: 0x0000000E ( |  | )
    texture formats (3): ARGB8888, YV12, IYUV
    max texture size: 16384x16384
-[000822]  desktop size: 1920 1080
-[000822] ok
-[000824] codo_sound_init mix_buffer_size: 1024
-[000824] codo_sound_init
-[000825] SDL_INIT_AUDIO ok
-[000854] SDL_OpenAudio ok
-[000854]  freq:22050
+[000829]  desktop size: 1920 1080
+[000829] ok
+[000831] codo_sound_init mix_buffer_size: 1024
+[000831] codo_sound_init
+[000831] SDL_INIT_AUDIO ok
+[000859] SDL_OpenAudio ok
+[000859]  freq:22050
  channels:1
-[000854] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
-[000854] Current audio driver: wasapi
-[000854] splore_init
-[000854] could not load favourites file: c:/Users/xande/Documents/OpenAIGym/RatQuest/favourites.txt
-[002716] loading c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
-[004445] run_cart current_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_cart_lid: 
+[000859] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[000859] Current audio driver: wasapi
+[000859] splore_init
+[000860] could not load favourites file: c:/Users/xande/Documents/OpenAIGym/RatQuest/favourites.txt
+[002685] loading c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8
+[004401] run_cart current_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_filename: c:/Users/xande/Documents/OpenAIGym/RatQuest/rat_quest.p8 running_cart_lid: 
+[044711] window closed (14)
+[044711] codo_exit
+[044711]   cmusic_stop
+[044711]   codo_main_exit
+[044713]   codo_config_save
+[044714]   codo_sound_exit
+[044714]   codo_video_exit
+[044758]   codo_joystick_exit
+[044758]   codo_system_exit
+[044759]   codo_items_created: 1356
+[044759] ok

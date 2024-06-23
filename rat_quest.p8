@@ -12,7 +12,7 @@ function _init()
  p_colors = {5,6,7,10,9,5}
 fightingboss=false
 
-
+inventorySize=8
  t=0
  shake=0
  saved_map={}
@@ -20,16 +20,33 @@ fightingboss=false
  
  dirx=explodeval("-1,1,0,0,1,1,-1,-1")
  diry=explodeval("0,0,-1,1,-1,1,1,-1")
- 
- itm_name=explode("knife,poop,paring knife,utility knife,chef's knife,meat cleaver,paper apron,cotton apron,rubber apron,leather apron,chef's apron,butcher's apron,food 1,food 2,food 3,food 4,food 5,food 6,spork,salad fork,fish fork,dinner fork")
+ testNames="knife,sword,club,raincoat,cool hat,food 1,food 2,rock"
+ testTypes="wep,wep,wep,arm,arm,fud,fud,thr"
+ testStats1="1,2,1,0,0,1,2,1"
+ testStats2="0,0,0,1,2,0,0,0"
+ testStats3="0,0,0,0,0,0,0,-2"
+ testStatsDurability="1,3,4,1,4,0,0,0"
+--[[ 
+ itm_name=explode("knife,poop,paring knife,utility knife,chef's knife,meat cleaver,creeper hoodie,cotton apron,rubber apron,leather apron,chef's apron,butcher's apron,food 1,food 2,food 3,food 4,food 5,food 6,spork,salad fork,fish fork,dinner fork")
  itm_type=explode("wep,wep,wep,wep,wep,wep,arm,arm,arm,arm,arm,arm,fud,fud,fud,fud,fud,fud,thr,thr,thr,thr")
  itm_stat1=explodeval("1,2,3,4,5,6,0,0,0,0,1,2,1,2,3,4,5,6,1,2,3,4")
- itm_statDurability=explodeval("1,2,3,4,5,6,0,0,0,0,1,2,1,2,3,4,5,6,1,2,3,4")
  itm_stat2=explodeval("0,0,0,0,0,0,1,2,3,4,3,3,0,0,0,0,0,0,0,0,0,0")
  itm_stat3=explodeval("0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,0,0,0")
- itm_minf=explodeval("1,2,3,4,5,6,1,2,3,4,5,6,1,1,1,1,1,1,1,2,3,4")
+ itm_statDurability=explodeval("1,2,3,4,5,6,0,0,0,0,1,2,1,2,3,4,5,6,1,2,3,4")
+  itm_minf=explodeval("1,2,3,4,5,6,1,2,3,4,5,6,1,1,1,1,1,1,1,2,3,4")
  itm_maxf=explodeval("3,4,5,6,7,8,3,4,5,6,7,8,8,8,8,8,8,8,4,6,7,8")
- itm_desc=explode(",,,,,,,,,,,, heals, heals a lot, increases hp, stuns, is cursed, is blessed,,,,")
+  itm_desc=explode(",,,,,,,,,,,, heals, heals a lot, increases hp, stuns, is cursed, is blessed,,,,")
+ ]]
+
+ itm_name=explode(testNames)
+ itm_type=explode(testTypes)
+ itm_stat1=explodeval( testStats1)
+ itm_stat2=explodeval(testStats2)
+ itm_stat3=explodeval(testStats3)
+ itm_statDurability=explodeval( testStatsDurability)
+ itm_minf=explodeval("0,0,0,0,0,0,0,0")
+ itm_maxf=explodeval("0,0,0,0,0,0,0,0")
+ itm_desc=explode(",,,,,,,")
 
  mob_name=explode("player,bunny,snake,bombguy,minitor,brain,boss,golem,boss")
  mob_ani=explodeval("240,224,228,232,236,244,76,216,220")
@@ -158,13 +175,14 @@ function startgame(relod)
  
  p_t=0
  
- inv,eqp,dur={},{},{0,0,0,0,0,0,0,0}
+ inv,eqp,dur={},{},{}
+ for i=1,inventorySize+2 do
+  add(dur,"mt")
+ end
+
  foodnames()
- takeitem(13)
- takeitem(2)
- takeitem(19)
- takeitem(19)
- takeitem(19)
+ takeitem(1)
+ takeitem(4)
  
  wind={}
  float={}
@@ -681,9 +699,14 @@ function moveplayer(dx,dy)
   if mob then
    sfx(58)
    hitmob(p_mob.x,p_mob.y,mob,p_mob.atk,p_mob.push)
-   if dur[1]!=nil then 
+   if dur[1]!="mt" then 
     dur[1]-=1
+    if dur[1]<1 then
+      eqp[1]=nil
+      dur[1]="mt"
+      updatestats()
    end
+  end
   else
    if fget(tle,1) then
     trig_bump(tle,destx,desty)
@@ -709,7 +732,9 @@ end
 
 end
 function trig_bump(tle,destx,desty)
-  printh(destx..","..desty,"debugs.txt",4)
+ if tle==2 then 
+  skipai=true
+ end
  if tle==7 or tle==8 then
   --vase
   sfx(59)
@@ -833,67 +858,70 @@ function inbounds(x,y)
  return not (x<0 or y<0 or x>15 or y>15)
 end
 
-function hitmob(atkx,atky,defm,dmg,push)
-
-
- 
- --add curse/bless
- if defm.bless<0 then
-  dmg*=2
- elseif defm.bless>0 then
-  dmg=flr(dmg/2)
- end
- defm.bless=0
- 
- local def=defm.defmin+flr(rnd(defm.defmax-defm.defmin+1))
- dmg-=min(def,dmg)
- --dmg=max(0,dmg)
- 
- defm.hp-=dmg
- defm.flash=10
- 
- 
- 
- shake=defm==p_mob and 0.08 or 0.04
- if push != 0 then
-  pushmob(atkx,atky,defm,push)
-   end
-   addfloat("-"..dmg,defm.x*8,defm.y*8,9)
- if defm.hp<=0 then
-  if defm.spec=="bomb"then 
-
-    closemobs={}
-    for i=1,4 do
-      local dx,dy=dirx[i],diry[i]
-      local tx,ty=defm.x+dx,defm.y+dy
-      if(getmob(tx,ty)) then
-        add(closemobs,getmob(tx,ty))
-      end
-    end
-    for mobs in all(closemobs) do
-      hitmob(defm.x,defm.y,mobs,2,2)
-    end
-    explosionEffect(defm.x*8,defm.y*8)
-    mset(defm.x*8,defm.y*8,1)
-
+function hitmob(atkx, atky, defm, dmg, push)
+  -- Add curse/bless effect
+  if defm.bless < 0 then
+      dmg *= 2
+  elseif defm.bless > 0 then
+      dmg = flr(dmg / 2)
   end
-  if defm!=p_mob then 
-   st_kills+=1 
-  else 
-  if atkm !=  nil then
-   st_killer=atkm.name
-   else
-   st_killer="who even knows man"
-   end
-  end
-  if(defm==p_mob and dur[2]!=nil)then
+  defm.bless = 0
+
+  local def = defm.defmin + flr(rnd(defm.defmax - defm.defmin + 1))
+  dmg -= min(def, dmg)
+
+  defm.hp -= dmg
+  defm.flash = 10
+  if(defm==p_mob and dur[2]!="mt")then
+    printh(defm, '@clip')
     dur[2]-=1
+    if(dur[2]<1)then
+      eqp[2]=nil
+      updatestats()
+    end
   end
-  add(dmob,defm)
-  del(mob,defm)
-  defm.dur=10
- end
+  shake = (defm == p_mob) and 0.08 or 0.04
+
+  if push != 0 then
+      pushmob(atkx, atky, defm, push)
+  end
+
+  addfloat("-" .. dmg, defm.x * 8, defm.y * 8, 9)
+
+  if defm.hp <= 0 then
+      if defm.spec == "bomb" then
+          closemobs = {}
+          for i = 1, 4 do
+              local dx, dy = dirx[i], diry[i]
+              local tx, ty = defm.x + dx, defm.y + dy
+              local mob_at_pos = getmob(tx, ty)
+              if mob_at_pos then
+                  add(closemobs, mob_at_pos)
+              end
+          end
+          for mobs in all(closemobs) do
+              hitmob(defm.x, defm.y, mobs, 2, 2)
+          end
+          explosionEffect(defm.x * 8, defm.y * 8)
+          mset(defm.x * 8, defm.y * 8, 1)
+      end
+
+      if defm != p_mob then
+          st_kills += 1
+      else
+          if atkm != nil then
+              st_killer = atkm.name
+          else
+              st_killer = "who even knows man"
+          end
+      end
+
+      add(dmob, defm)
+      del(mob, defm)
+      defm.dur = 10
+  end
 end
+
 function tile_effect(_x,_y,mob)
   if mget(_x,_y)==106 and mob != nil then
     hitmob(_x,_x,mob,900,0)
@@ -1245,17 +1273,24 @@ local window_width=115
    eqt= i==1 and "[weapon]" or "[armor]"
    add(col,5)
   end
-  if dur[i] != nil then
-  add(txt, eqt.." dur: "..dur[1])
+  local sub_dur=dur[i]
+  if(sub_dur == "mt") or eqp[i] == nil then
+    sub_dur=0
   end
-end
+  add(txt, eqt.." dur: "..sub_dur)
+  end
+
  add(txt,"……………………")
  add(col,6)
- for i = 1, 6 do
+ for i = 1, inventorySize do
   itm = inv[i]
+
   if itm then
       if itm_type[itm] == "wep" then
-        add(txt, itm_name[itm] .. " a: " .. itm_stat2[itm] .. " p: " .. itm_stat3[itm].. " d: "..dur[i+2])
+        add(txt, itm_name[itm] .. " a: " .. itm_stat2[itm] .. " p: " .. itm_statDurability[itm].. " d: "..dur[2+i])
+        add(col, 6)
+      elseif itm_type[itm] == "arm" then
+        add(txt, itm_name[itm] .. " def: " .. itm_stat1[itm] .. "-" .. itm_statDurability[itm].. "d: "..dur[2+i])
         add(col, 6)
       elseif itm_type[itm] == "thr" then
           add(txt, itm_name[itm] .. " a: " .. itm_stat2[itm] .. " p: " .. itm_stat3[itm] )
@@ -1274,7 +1309,7 @@ end
 end
  
 
- invwind=addwind(5,17,window_width,62,txt)
+ invwind=addwind(5,17,window_width,10*inventorySize,txt)
  invwind.cur=3
  invwind.col=col
 
@@ -1314,7 +1349,11 @@ function showuse()
  usewind.cur=1
  curwind=usewind 
 end
-
+function printder()
+  for i=1, #dur do
+    print(dur[i])
+  end
+end
 function triguse()
  local verb,i,back=usewind.txt[usewind.cur],invwind.cur,true
  local itm=i<3 and eqp[i] or inv[i-3]
@@ -1330,9 +1369,18 @@ function triguse()
   if itm_type[itm]=="wep" then
    slot=1
   end
-  inv[i-3]=nil
+  local sub_dur=dur[slot]
+  dur[slot]=dur[i-1]
+  if sub_dur=="mt" then
+    dur[i-1]="mt"
+  else
+    dur[i-1]=sub_dur
+
+  end
+  inv[i-3]=eqp[slot]
   eqp[slot]=itm
-  dur[slot]=dur[i-3]
+  
+  
 
 elseif verb=="remove" then
   i=freeinvslot()
@@ -1341,11 +1389,12 @@ elseif verb=="remove" then
   if itm_type[itm]=="wep" then
    slot=1
   end
+  local sub =eqp[slot] 
   inv[i]=eqp[slot]
   eqp[slot]=nil
   dur[i+2]=dur[slot]
-  dur[slot]=nil
-  
+  dur[slot]="mt"
+ 
 end
  elseif verb=="eat" then
   eat(itm,p_mob)
@@ -1724,7 +1773,7 @@ if dist<0 then
   dist*=-1
 end
 push=modif
-printh("modif: "..modif,"debugs")
+
 if atkx == defm.x and atky < defm.y   then
   py=push
 end
@@ -1745,7 +1794,7 @@ for i =0,dist-1	do
   defm.x+=px
   defm.y+=py
   
-  printh("stats: "..px..","..py,"debugs")
+
 	tile_effect(defm.x,defm.y,defm)
 	end
 end
@@ -1817,13 +1866,13 @@ function takeitem(itm)
  if i==0 then return false end
  inv[i]=itm
  if itm_type[itm]=="wep" or itm_type[itm]=="arm" then
-  dur[2+i]=itm_statDurability[itm]
+  dur[i+2]=itm_statDurability[itm]
  end
  return true
 end
 
 function freeinvslot()
- for i=1,6 do
+ for i=1,inventorySize do
   if not inv[i] then
    return i
   end

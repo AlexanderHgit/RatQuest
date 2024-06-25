@@ -5,14 +5,13 @@ function _init()
  debug={}
  animatedtiles={}
  animatedpixles={}
- screenspikes={}
  particles={}
  smoke={}
  explosion={}
  p_colors = {5,6,7,10,9,5}
-fightingboss=false
 
-inventorySize=8
+
+
  t=0
  shake=0
  saved_map={}
@@ -20,51 +19,31 @@ inventorySize=8
  
  dirx=explodeval("-1,1,0,0,1,1,-1,-1")
  diry=explodeval("0,0,-1,1,-1,1,1,-1")
- number_of_non_chest_items=4
- testNames="knife,sword,club,raincoat,cool hat,food 1,food 2,rock,big rock,crumbling wall,lava,spike,tile graber"
- testTypes="wep,wep,wep,arm,arm,fud,fud,thr,thr,tle,tle,tle,spec"
- testStats1="1,2,1,0,0,1,2,999,999,3,106,80"
- testStats2="0,0,0,1,2,0,0,0,0,0,1,1"
- testStats3="0,0,0,1,1,0,0,-2,0,0,0,1,1"
- testStatsDurability="1,3,4,1,4,0,0,0,0,0,0,1,1"
---[[ 
- itm_name=explode("knife,poop,paring knife,utility knife,chef's knife,meat cleaver,creeper hoodie,cotton apron,rubber apron,leather apron,chef's apron,butcher's apron,food 1,food 2,food 3,food 4,food 5,food 6,spork,salad fork,fish fork,dinner fork")
+ 
+ itm_name=explode("butter knife,cheese knife,paring knife,utility knife,chef's knife,meat cleaver,paper apron,cotton apron,rubber apron,leather apron,chef's apron,butcher's apron,food 1,food 2,food 3,food 4,food 5,food 6,spork,salad fork,fish fork,dinner fork")
  itm_type=explode("wep,wep,wep,wep,wep,wep,arm,arm,arm,arm,arm,arm,fud,fud,fud,fud,fud,fud,thr,thr,thr,thr")
  itm_stat1=explodeval("1,2,3,4,5,6,0,0,0,0,1,2,1,2,3,4,5,6,1,2,3,4")
  itm_stat2=explodeval("0,0,0,0,0,0,1,2,3,4,3,3,0,0,0,0,0,0,0,0,0,0")
- itm_stat3=explodeval("0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,0,0,0")
- itm_statDurability=explodeval("1,2,3,4,5,6,0,0,0,0,1,2,1,2,3,4,5,6,1,2,3,4")
-  itm_minf=explodeval("1,2,3,4,5,6,1,2,3,4,5,6,1,1,1,1,1,1,1,2,3,4")
+ itm_minf=explodeval("1,2,3,4,5,6,1,2,3,4,5,6,1,1,1,1,1,1,1,2,3,4")
  itm_maxf=explodeval("3,4,5,6,7,8,3,4,5,6,7,8,8,8,8,8,8,8,4,6,7,8")
-  itm_desc=explode(",,,,,,,,,,,, heals, heals a lot, increases hp, stuns, is cursed, is blessed,,,,")
- ]]
+ itm_desc=explode(",,,,,,,,,,,, heals, heals a lot, increases hp, stuns, is cursed, is blessed,,,,")
 
- itm_name=explode(testNames)
- itm_type=explode(testTypes)
- itm_stat1=explodeval( testStats1)
- itm_stat2=explodeval(testStats2)
- itm_stat3=explodeval(testStats3)
- itm_statDurability=explodeval( testStatsDurability)
- itm_minf=explodeval("0,0,0,0,0,0,0,0")
- itm_maxf=explodeval("0,0,0,0,0,0,0,0")
- itm_desc=explode(",,,,,,,")
-
- mob_name=explode("player,bunny,snake,bombguy,minitor,brain,boss,golem,boss")
- mob_ani=explodeval("240,224,228,232,236,244,76,216,220")
+ mob_name=explode("player,bunny,snake,bombguy,minitor,brain,ghost,golem,drake")
+ mob_ani=explodeval("240,224,228,232,236,244,212,216,220")
  mob_atk=explodeval("1,1,2,1,2,3,3,5,5")
- mob_push=explodeval("1,1,2,1,2,3,3,5,5")
- mob_weight=explodeval("0,0,0,0,0,0,0,0,0")
- mob_hp=explodeval("6,3,2,1,3,4,5,14,20")
+ mob_push=explodeval("3,0,2,1,2,3,3,5,5")
+
+ mob_hp=explodeval("90,20,2,1,3,4,5,14,8")
  mob_los=explodeval("4,4,4,4,4,4,4,4,4")
  mob_minf=explodeval("0,1,2,3,4,5,6,7,8")
  mob_maxf=explodeval("0,3,4,5,6,7,8,8,8")
- mob_spec=explode(",,fast,bomb,slow,stun,boss,slow,boss")
+ mob_spec=explode(",,fast,bomb,slow,stun,ghost,slow,")
  
  crv_sig=explodeval("255,214,124,179,233")
  crv_msk=explodeval("0,9,3,12,6")
 
- --free_sig=explodeval("0,0,0,0,16,64,32,128,161,104,84,146")
- --free_msk=explodeval("8,4,2,1,6,12,9,3,10,5,10,5")
+ free_sig=explodeval("0,0,0,0,16,64,32,128,161,104,84,146")
+ free_msk=explodeval("8,4,2,1,6,12,9,3,10,5,10,5")
 
  wall_sig=explodeval("251,233,253,84,146,80,16,144,112,208,241,248,210,177,225,120,179,0,124,104,161,64,240,128,224,176,242,244,116,232,178,212,247,214,254,192,48,96,32,160,245,250,243,249,246,252")
  wall_msk=explodeval("0,6,0,11,13,11,15,13,3,9,0,0,9,12,6,3,12,15,3,7,14,15,0,15,6,12,0,0,3,6,12,9,0,9,0,15,15,7,15,14,0,0,0,0,0,0")
@@ -84,14 +63,13 @@ function _update60()
 end
 
 function _draw()
-
+  
  doshake()
  _drw()
- 
  drawind()
  drawlogo()
  
-
+ animateLavaPixles()
  
  drawExplode()
  drawSmoke()
@@ -107,9 +85,11 @@ function _draw()
 end
 
 function animateLavaPixles()
+  p=0
   if #animatedpixles>0 then
   for i in all(animatedpixles) do 
-  pset(i.x,i.y,10)
+  p+=1
+  pset(p+i.x,i.y,10)
   i.y+=0.2
   if i.y > (i.ystart+7) then
   i.y=i.ystart
@@ -176,17 +156,15 @@ function startgame(relod)
  
  p_t=0
  
- inv,eqp,dur={},{},{}
-
- for i=1,inventorySize+2 do
-  add(dur,"mt")
- end
+ inv,eqp={},{}
 
  foodnames()
- takeitem(9)
- takeitem(10)
- takeitem(13)
- takeitem(12)
+ takeitem(19)
+ takeitem(19)
+ takeitem(19)
+ takeitem(19)
+ takeitem(19)
+ 
  wind={}
  float={}
 
@@ -324,12 +302,7 @@ function update_aiturn()
   end
  end
 end
-function floormsg()
 
-  showmsg("go gettem "..floor,120)
- 
- 
- end
 function update_gover()
  if btnp(❎) then
   sfx(54)
@@ -389,10 +362,10 @@ function draw_game()
  for i=#mob,1,-1 do
   drawmob(mob[i])
  end
- animateLavaPixles()
+ 
  if _upd==update_throw then
   --★
-  local tx,ty=throwtile(inv[thrslt])
+  local tx,ty=throwtile()
   local lx1,ly1=p_mob.x*8+3+thrdx*4,p_mob.y*8+3+thrdy*4
   local lx2,ly2=mid(0,tx*8+3,127),mid(0,ty*8+3,127)
   rectfill(lx1+thrdy,ly1+thrdx,lx2-thrdy,ly2-thrdx,0)
@@ -534,7 +507,7 @@ end
     end
  end
  function explosionEffect(x,y)
-  for i = 1, 20 do
+  for i = 1, 200 do
       add(explosion, {
        x = x,
        y = y,
@@ -604,11 +577,22 @@ end
 
 
 function copymap(x,y,relod)
-animatedpixles={}
 if relod == nil then
 relod = false
 end
-
+local tx,ty
+for tx=0,15 do
+  for ty=0,15 do
+  if(mget(tx,ty)==96) then 
+  positions={0,1,2,3,4,5,6,7}
+  for i=0,3 do
+  pos=flr(rnd(positions))+1
+  del(positions,pos)
+  add(animatedpixles,{x=i+(tx*8),y=pos+(ty*8),vely=1,ystart=(ty*8)})
+  end
+  end
+  end
+  end
  local tle
  if relod then 
   for _x=0,15 do
@@ -625,20 +609,8 @@ end
    tle=mget(_x+x,_y+y)
    mset(_x,_y,tle)
   saved_map[_x][_y]=mget(_x+x,_y+y)
-  if(mget(_x,_y)==106) then 
-    positions={0,1,2,3,4,5,6,7}
-    for i=1,4 do
-    pos=flr(rnd(positions))+1
-    del(positions,pos)
-    add(animatedpixles,{x=((i*2)+(_x*8))-1,y=pos+(_y*8),vely=1,ystart=(_y*8)})
-    end
-    end
-    if(mget(_x,_y)==102)  then 
-      add(screenspikes,{_x,_y,false})
-    end 
-    if(mget(_x,_y)==103)  then 
-      add(screenspikes,{_x,_y,true})
-    end 
+
+
    if tle==15 then
     p_mob.x,p_mob.y=_x,_y
    end
@@ -690,7 +662,7 @@ end
 function moveplayer(dx,dy)
  local destx,desty=p_mob.x+dx,p_mob.y+dy
  local tle=mget(destx,desty)
- toggleSpikes()
+  
  if iswalkable(destx,desty,"checkmobs") then
 
   --sfx(63)
@@ -708,14 +680,6 @@ function moveplayer(dx,dy)
   if mob then
    sfx(58)
    hitmob(p_mob.x,p_mob.y,mob,p_mob.atk,p_mob.push)
-   if dur[1]!="mt" then 
-    dur[1]-=1
-    if dur[1]<1 then
-      eqp[1]=nil
-      dur[1]="mt"
-      updatestats()
-   end
-  end
   else
    if fget(tle,1) then
     trig_bump(tle,destx,desty)
@@ -726,32 +690,18 @@ function moveplayer(dx,dy)
   end
  end
  unfog()
- 
-end
-function toggleSpikes()
-for i in all(screenspikes) do
-  if i[3] then 
-    i[3]=false
-    mset(i[1],i[2],103)
-  else 
-    i[3]=true
-    mset(i[1],i[2],102)
-  end
 end
 
-end
 function trig_bump(tle,destx,desty)
- if tle==2 then 
-  skipai=true
- end
+  printh(destx..","..desty,"debugs.txt",4)
  if tle==7 or tle==8 then
   --vase
   sfx(59)
-  mset(destx,desty,1)
+  mset(destx,desty,76)
   if rnd(3)<1  then
    if rnd(5)<1 then
-   showmsg("JUMP SCARE",120)
-   addmob(getrnd({2,3,4}),destx,desty)
+   showmsg("im gonna fucking kill you",120)
+   -- addmob(getrnd(mobpool),destx,desty)
     sfx(60)
    else
     if freeinvslot()==0 then
@@ -759,7 +709,7 @@ function trig_bump(tle,destx,desty)
      sfx(60)
     else
      sfx(61)
-     local itm=get_random_item()
+     local itm=flr(rnd(#itm_name))+1
      takeitem(itm)
      showmsg(itm_name[itm].."!",60)
     end
@@ -772,16 +722,16 @@ function trig_bump(tle,destx,desty)
    skipai=true
    sfx(60)
   else
-   local itm=get_random_item()
+   local itm=flr(rnd(#itm_name))+1
    if tle==12 then
-    itm=get_random_item()
+    itm=flr(rnd(#itm_name))  +1
    end
    sfx(61)
    mset(destx,desty,tle-1)
    takeitem(itm)
   showmsg(itm_name[itm].."!",60)
   end
- elseif tle==13 or tle==3 then
+ elseif tle==13 then
   --door
   sfx(62)
   mset(destx,desty,1)
@@ -813,6 +763,7 @@ function trig_bump(tle,destx,desty)
   
  end
 -- lava
+
 
 end
 
@@ -867,80 +818,54 @@ function inbounds(x,y)
  return not (x<0 or y<0 or x>15 or y>15)
 end
 
-function hitmob(atkx, atky, defm, dmg, push)
-  -- Add curse/bless effect
-  if defm.bless < 0 then
-      dmg *= 2
-  elseif defm.bless > 0 then
-      dmg = flr(dmg / 2)
-  end
-  defm.bless = 0
+function hitmob(atkx,atky,defm,dmg,push)
 
-  local def = defm.defmin + flr(rnd(defm.defmax - defm.defmin + 1))
-  dmg -= min(def, dmg)
 
-  defm.hp -= dmg
-  defm.flash = 10
-  if push != 0 then
-    pushmob(atkx, atky, defm, push)
-end
-  if(defm==p_mob and dur[2]!="mt")then
  
-    dur[2]-=1
-    if(dur[2]<1)then
-      eqp[2]=nil
-      updatestats()
-    end
+ --add curse/bless
+ if defm.bless<0 then
+  dmg*=2
+ elseif defm.bless>0 then
+  dmg=flr(dmg/2)
+ end
+ defm.bless=0
+ 
+ local def=defm.defmin+flr(rnd(defm.defmax-defm.defmin+1))
+ dmg-=min(def,dmg)
+ --dmg=max(0,dmg)
+ 
+ defm.hp-=dmg
+ defm.flash=10
+ 
+ 
+ 
+ shake=defm==p_mob and 0.08 or 0.04
+ if push != 0 then
+  pushmob(atkx,atky,defm,push)
+   end
+   addfloat("-"..dmg,defm.x*8,defm.y*8,9)
+ if defm.hp<=0 then
+  if defm!=p_mob then 
+   st_kills+=1 
+  else 
+  if atkm !=  nil then
+   st_killer=atkm.name
+   else
+   st_killer="who even knows man"
+   end
   end
-  shake = (defm == p_mob) and 0.08 or 0.04
 
-
-
-  addfloat("-" .. dmg, defm.x * 8, defm.y * 8, 9)
-
-  if defm.hp <= 0 then
-      if defm.spec == "bomb" then
-          closemobs = {}
-          for i = 1, 4 do
-              local dx, dy = dirx[i], diry[i]
-              local tx, ty = defm.x + dx, defm.y + dy
-              local mob_at_pos = getmob(tx, ty)
-              if mob_at_pos then
-                  add(closemobs, mob_at_pos)
-              end
-          end
-          for mobs in all(closemobs) do
-              hitmob(defm.x, defm.y, mobs, 2, 2)
-          end
-          explosionEffect(defm.x * 8, defm.y * 8)
-          mset(defm.x * 8, defm.y * 8, 1)
-      end
-
-      if defm != p_mob then
-          st_kills += 1
-      else
-          if atkm != nil then
-              st_killer = atkm.name
-          else
-              st_killer = "who even knows man"
-          end
-      end
-
-      add(dmob, defm)
-      del(mob, defm)
-      defm.dur = 10
-  end
+  add(dmob,defm)
+  del(mob,defm)
+  defm.dur=10
+ end
 end
-
 function tile_effect(_x,_y,mob)
-  if mget(_x,_y)==106 and mob != nil then
-    hitmob(_x,_x,mob,900,0)
-  end
-if mget(_x,_y) == 80 or mget(_x,_y) == 103 then
+
+if mget(_x,_y) == 80 then
 hitmob(_x,_y,mob,1,0)
-end
-if mget(_x,_y) == 1 then
-mob.last_safe={lx=_x,ly=_y}
+else
+mob.last_safe={lx=mob.x,ly=mob.y}
 
 end
 
@@ -1103,7 +1028,7 @@ function calcdist(tx,ty)
 end
 
 function updatestats()
- local atk,dmin,dmax,weight=1,0,0,0
+ local atk,dmin,dmax=1,0,0
  
  if eqp[1] then
   atk+=itm_stat1[eqp[1]]
@@ -1112,13 +1037,11 @@ function updatestats()
  if eqp[2] then
   dmin+=itm_stat1[eqp[2]]
   dmax+=itm_stat2[eqp[2]]
-  weight+=itm_stat3[eqp[2]]
  end
 
  p_mob.atk=atk
  p_mob.defmin=dmin
- p_mob.defmax=dmax
- p_mob.weight=weight 
+ p_mob.defmax=dmax 
 end
 
 function eat(itm,mb)
@@ -1154,29 +1077,18 @@ function eat(itm,mb)
 end
 
 function throw()
- local itm,tx,ty=inv[thrslt],throwtile(inv[thrslt])
- local trig=true
+ local itm,tx,ty=inv[thrslt],throwtile()
  sfx(52)
  if inbounds(tx,ty) then
- 
+  trig_bump(mget(tx,ty),tx,ty)
   local mb=getmob(tx,ty)
-  if mb and itm_type[itm] !="tle" then
+  if mb then
    if itm_type[itm]=="fud" then
     eat(itm,mb)
    else
-    hitmob(p_mob.x,p_mob.y,mb,itm_stat1[itm],itm_stat3[itm])
+    hitmob(p_mob.x,p_mob.y,mb,itm_stat1[itm],-2)
     sfx(58)
    end
-  elseif itm_type[itm] == "tle" then
-    printh("hey: "..itm_stat1[get_tile_item(itm_stat1[itm])],'@clip')
-    trig=false
-    droptile(tx,ty,itm_stat1[get_tile_item(itm_stat1[itm])])
-  elseif itm_type[itm]=="spec" then
-    trig=false
-    takeitem(get_tile_item(mget(tx,ty)))
-  end
-  if trig then
-  trig_bump(mget(tx,ty),tx,ty)
   end
  end
  mobbump(p_mob,thrdx,thrdy)
@@ -1186,13 +1098,12 @@ function throw()
  _upd=update_pturn
 end
 
-function throwtile(itm)
+function throwtile()
  local tx,ty=p_mob.x,p_mob.y
  repeat
   tx+=thrdx
   ty+=thrdy
- until not iswalkable(tx,ty,"checkmobs") or itm_type[itm] =="tle" or  itm_type[itm] =="spec"
-
+ until not iswalkable(tx,ty,"checkmobs")
  return tx,ty
 end
 -->8
@@ -1285,7 +1196,7 @@ function dohpwind()
 end
 
 function showinv()
-local window_width=122
+local window_width=115
  local txt,col,itm,eqt={},{}
  _upd=update_inv
  for i=1,2 do
@@ -1297,54 +1208,34 @@ local window_width=122
    eqt= i==1 and "[weapon]" or "[armor]"
    add(col,5)
   end
-  local sub_dur=dur[i]
-  if(sub_dur == "mt") or eqp[i] == nil then
-    sub_dur=0
-  end
-  add(txt, eqt.." uses: "..sub_dur)
-  end
-
+  add(txt,eqt)
+ end
  add(txt,"……………………")
  add(col,6)
- for i = 1, inventorySize do
-  itm = inv[i]
-
+ for i=1,6 do
+  itm=inv[i]
   if itm then
-      if itm_type[itm] == "wep" then
-        add(txt, itm_name[itm] .. " a:" .. itm_stat2[itm] .. " p:" .. itm_statDurability[itm].. " d:"..dur[2+i])
-        add(col, 6)
-      elseif itm_type[itm] == "arm" then
-        add(txt, itm_name[itm] .. " d:" .. itm_stat1[itm] .. "-" .. itm_statDurability[itm].. " p:-"..itm_stat3[itm].. " d:"..dur[2+i].." w:"..itm_stat3[itm])
-        add(col, 6)
-      elseif itm_type[itm] == "thr" then
-          add(txt, itm_name[itm] .. " a:" .. itm_stat2[itm] .. " p:" .. itm_stat3[itm] )
-          add(col, 6)
-      elseif itm_type[itm] == "fud" then
-          add(txt, itm_name[itm] .. " hp:" .. itm_stat1[itm])
-          add(col, 6)
-      else
-          add(txt, itm_name[itm])
-          add(col, 6)
-      end
+   add(txt,itm_name[itm])
+   add(col,6)
   else
-      add(txt, "...")
-      add(col, 5)
+   add(txt,"...")
+   add(col,5)
   end
-end
+ end
  
 
- invwind=addwind(3,17,window_width,10*inventorySize,txt)
+ invwind=addwind(5,17,window_width,62,txt)
  invwind.cur=3
  invwind.col=col
 
- txt="ok "
+ txt="ok    "
  if p_mob.bless<0 then
   txt="curse "
  elseif p_mob.bless>0 then
   txt="bless "
  end
    
- statwind=addwind(2,5,window_width+2,13,{txt.."atk:"..p_mob.atk.." def:"..p_mob.defmin.."-"..p_mob.defmax.." push:"..p_mob.push.." lbs:"..p_mob.weight})
+ statwind=addwind(5,5,window_width,13,{txt.."atk:"..p_mob.atk.." push:"..p_mob.push.." def:"..p_mob.defmin.."-"..p_mob.defmax})
  
  curwind=invwind
 end
@@ -1354,12 +1245,8 @@ function showuse()
  if itm==nil then return end
  local typ,txt=itm_type[itm],{}
  
- if (typ=="wep" or typ=="arm")  then
-  if(invwind.cur>3)then
+ if (typ=="wep" or typ=="arm") and invwind.cur>3 then
   add(txt,"equip")
-  else
-    add(txt,"remove")
-  end
  end
  if typ=="fud" then
   add(txt,"eat")
@@ -1367,131 +1254,81 @@ function showuse()
  if typ=="thr" or typ=="fud" then
   add(txt,"throw")
  end
- 
- if typ=="tle" then
-  add(txt,"place")
-add(txt,"drop")
- end
- if typ=="spec" then
-  add(txt,"adjacent")
-  add(txt,"below")
- end
  add(txt,"trash")
 
  usewind=addwind(84,invwind.cur*6+11,36,7+#txt*6,txt)
  usewind.cur=1
  curwind=usewind 
 end
-function printder()
-  for i=1, #dur do
-    print(dur[i])
-  end
-end
 
 function triguse()
-  local verb,i,back=usewind.txt[usewind.cur],invwind.cur,true
-  local itm=i<3 and eqp[i] or inv[i-3]
-  
-  if verb=="trash" then
-   if i<3 then
-    eqp[i]=nil
-   else
-    inv[i-3]=nil
-   end
-  elseif verb=="equip" then
-   local slot=2
-   if itm_type[itm]=="wep" then
-    slot=1
-   end
-   local sub_dur=dur[slot]
-   dur[slot]=dur[i-1]
-   if sub_dur=="mt" then
-     dur[i-1]="mt"
-   else
-     dur[i-1]=sub_dur
+ local verb,i,back=usewind.txt[usewind.cur],invwind.cur,true
+ local itm=i<3 and eqp[i] or inv[i-3]
  
-   end
-   inv[i-3]=eqp[slot]
-   eqp[slot]=itm
-   
-   
- 
- elseif verb=="remove" then
-   i=freeinvslot()
-   if i>0 then 
-   local slot=2
-   if itm_type[itm]=="wep" then
-    slot=1
-   end
-   local sub =eqp[slot] 
-   inv[i]=eqp[slot]
-   eqp[slot]=nil
-   dur[i+2]=dur[slot]
-   dur[slot]="mt"
-  
- end
-  elseif verb=="eat" then
-   eat(itm,p_mob)
-   _upd,inv[i-3],p_mob.mov,p_t,back=update_pturn,nil,nil,0,false
-  elseif verb=="place" or verb=="throw" or verb=="adjacent" then
-   _upd,thrslt,back=update_throw,i-3,false
-  elseif verb=="drop" then
-    droptile(p_mob.x,p_mob.y,itm_stat1[itm])
-
-    _upd,inv[i-3],p_mob.mov,p_t,back=update_pturn,nil,nil,0,false
-  elseif verb=="below" then
-    takeitem(get_tile_item(mget(p_mob.x,p_mob.y)))
-    _upd,inv[i-3],p_mob.mov,p_t,back=update_pturn,nil,nil,0,false
-  end
-  
-  updatestats()
-  usewind.dur=0
-  
-  if back then
-   del(wind,invwind)
-   del(wind,statwind)
-   showinv()
-   invwind.cur=i
-   showhint()
+ if verb=="trash" then
+  if i<3 then
+   eqp[i]=nil
   else
-   invwind.dur=0
-   statwind.dur=0
-   if hintwind then
-    hintwind.dur=0
-   end
+   inv[i-3]=nil
   end
- end
- function get_tile_item(tle)
-  local pos=#itm_stat1-number_of_non_chest_items
- 
-  for i=pos+1,#itm_stat1 do
-    if itm_stat1[i] == tle then 
-      
- 
-    
-      return i
-    end
-
+ elseif verb=="equip" then
+  local slot=2
+  if itm_type[itm]=="wep" then
+   slot=1
   end
-  
+  inv[i-3]=eqp[slot]
+  eqp[slot]=itm
+ elseif verb=="eat" then
+  eat(itm,p_mob)
+  _upd,inv[i-3],p_mob.mov,p_t,back=update_pturn,nil,nil,0,false
+ elseif verb=="throw" then
+  _upd,thrslt,back=update_throw,i-3,false
  end
- function showhint()
+ 
+ updatestats()
+ usewind.dur=0
+ 
+ if back then
+  del(wind,invwind)
+  del(wind,statwind)
+  showinv()
+  invwind.cur=i
+  showhint()
+ else
+  invwind.dur=0
+  statwind.dur=0
   if hintwind then
    hintwind.dur=0
-   hintwind=nil
   end
-  
-  if invwind.cur>3 then
-   local itm=inv[invwind.cur-3]
-   
-   if itm and itm_type[itm]=="fud" then
-    local txt=itm_known[itm] and itm_name[itm]..itm_desc[itm] or "???"
-    hintwind=addwind(5,78,#txt*4+7,13,{txt})
-   end
-  
-  end
-  
  end
+end
+
+function floormsg()
+ if floor==1 then 
+ showmsg("floor "..floor,120)
+else
+ showmsg(":) rat "..floor,120)
+end
+
+end
+
+function showhint()
+ if hintwind then
+  hintwind.dur=0
+  hintwind=nil
+ end
+ 
+ if invwind.cur>3 then
+  local itm=inv[invwind.cur-3]
+  
+  if itm and itm_type[itm]=="fud" then
+   local txt=itm_known[itm] and itm_name[itm]..itm_desc[itm] or "???"
+   hintwind=addwind(5,78,#txt*4+7,13,{txt})
+  end
+ 
+ end
+ 
+end
 -->8
 --mobs and items
 
@@ -1516,15 +1353,12 @@ function addmob(typ,mx,my)
   hpmax=mob_hp[typ],
   atk=mob_atk[typ],
   push=mob_push[typ],
-  weight=mob_weight[typ],
   defmin=0,
   defmax=0,
   los=mob_los[typ],
   task=ai_wait,
   name=mob_name[typ],
-  turns=1,
-  turns_since_last_seen=0,
-  last_seen={x=-1,y=-1}
+  turns=1
 
  }
  for i=0,3 do
@@ -1591,114 +1425,30 @@ function doai()
   p_mob.stun=false
  end
 end
-function randomBossGimmick()
 
---spawnMobs({2,3,4},5)
-attack=flr(rnd(5))
-if attack > 4 then 
-  bossAttackBombs()
-end
-if attack >2 then
-  bossAttackSnakes()
-end
-
-end
-function spawnMobs(mobpool,rate)
-  for _x=1,14 do
-    for _y=1,14 do
-      if getmob(_x,_y) == false and rnd(rate)<1 and mget(_x,_y)==1 then
-      m=getrnd(mobpool)
-        addfloat("spawned",_x*8,_y*8,9)
-      addmob(m,_x,_y)
-      end
-    end
-  end
-end
-
-function bossAttackSnakes()
-  spawnMobs({4},20)
-end
-function bossAttackBombs()
---[[   mob_pool={}
-  for i=2,#mob_name do
-  add(mob_pool,i)
-  end ]]
---[[   for _x=1,14 do
-    for _y=1,14 do
-      if getmob(_x,_y) == false and rnd(20)<1 and mget(_x,_y)==1 then
-        for i in all(mob) do
-          if i.name=="boss" then
-            addfloat("bombs away",i.x*8,i.y*8,9)
-          end
-        end
-        addmob(4,_x,_y)
-            
-          
-        
-      end
-
-    end
-  end ]]
-  spawnMobs({4},20)
-end
-function ai_wonder(m)
-  if cansee(m,p_mob) then
-    m.turns_since_last_seen=0
-    --aggro
-    m.task=ai_attac
-    m.tx,m.ty=p_mob.x,p_mob.y
-    addfloat("!",m.x*8+2,m.y*8,10)
-  
-  
-  end
-  if m.turns_since_last_seen > 30 then
-    m.task=ai_wait
-    addfloat("...",m.x*8+2,m.y*8,10)
-    return true
-  end
-  m.turns_since_last_seen+=1
-   return handle_move(m)
-
-end
 function ai_wait(m)
  if cansee(m,p_mob) then
   --aggro
   m.task=ai_attac
   m.tx,m.ty=p_mob.x,p_mob.y
   addfloat("!",m.x*8+2,m.y*8,10)
+  addfloat(tostr(m.spec), m.x * 8 + 2, m.y * 8, 10)
+      
  end
---[[  if cantmoveallharm(m.x,m.y) then
-
-  m.task=ai_attac
-  m.tx,m.ty=m.last_safe["lx"], m.last_safe["ly"]
-  addfloat("oh no",m.x*8+2,m.y*8,10)
- else
-  addfloat("safe",m.x*8+2,m.y*8,10)
- end ]]
-
  return false
-
 end
 function ai_attac(m)
-
   -- Check if the mob is adjacent to the player
   m.turns-=1
   if m.turns<0 and m.spec=="fast" then 
     m.turns=2
     return true
   end
-  if m.spec=="boss" and m.charge>0 then 
-    m.charge+=0.1
-  end
   if m.spec=="stun" and m.charge>0 and m.charge<2 then 
       m.charge+=0.25
   end
   if m.spec == "slow" and m.lastmoved then
     return false
-end
-if m.spec=="boss" and m.charge>2 then 
-  randomBossGimmick()
-  m.charge-=1
 end
   if dist(m.x, m.y, p_mob.x, p_mob.y) == 1 then
       return handle_attack(m)
@@ -1709,14 +1459,13 @@ end
 end
 
 function handle_attack(m)
-  m.turns_since_last_seen=0
+  
   local dx, dy = p_mob.x - m.x, p_mob.y - m.y
   mobbump(m, dx, dy)
 
   if m.spec == "stun" and m.charge > 1 then
       stunmob(p_mob)
       m.charge -= 1
-
   elseif m.spec == "ghost" and m.charge > 0 then
       hitmob(m.x, m.y, p_mob, m.atk, m.push)
       blessmob(p_mob, -1)
@@ -1743,56 +1492,31 @@ function handle_attack(m)
   sfx(57)
   return true
 end
-function get_tile_at(x, y)
-  -- Each tile is 8x8 pixels
-  local tile_size = 8
-  
-  -- Calculate the tile coordinates
-  local tile_x = flr(x / tile_size)
-  local tile_y = flr(y / tile_size)
-  
-  return tile_x, tile_y
-end
 
 function handle_move(m)
 
+    addfloat(tostr(m.spec), m.x * 8 + 2, m.y * 8, 10)
   if cansee(m, p_mob) then
-    m.tx, m.ty = p_mob.x, p_mob.y
-    m.last_seen["x"],m.last_seen["y"]=p_mob.x,p_mob.y
-    if m.turns_since_last_seen > 0  then 
-      addfloat("!",m.x*8+2,m.y*8,10)
-    end
-  else
-    if m.turns_since_last_seen ==0 then 
-    addfloat("!?",m.x*8+2,m.y*8,10)
-    
-  elseif m.turns_since_last_seen > 20 then
-    if m.turns_since_last_seen==20 then 
-    addfloat("?",m.x*8+2,m.y*8,10)
-    end
-    m.task=ai_wonder
-    
+      m.tx, m.ty = p_mob.x, p_mob.y
   end
-  m.turns_since_last_seen+=1
-end
-if cantmoveallharm(m.x,m.y) then
 
-  m.tx, m.ty =  m.last_safe["lx"], m.last_safe["ly"]
+  if m.x == m.tx and m.y == m.ty then
+      m.task = ai_wait
+      addfloat("?", m.x * 8 + 2, m.y * 8, 10)
 
-end
-
+      return true
+  end
 
 
 
   local bdst, cand = 999, {}
   calcdist(m.tx, m.ty)
 
-
   for i = 1, 4 do
       local dx, dy = dirx[i], diry[i]
       local tx, ty = m.x + dx, m.y + dy
 
-      if (iswalkable(tx, ty, "checkmobs") and iswalkable(tx, ty, "checkspike")) then
+      if iswalkable(tx, ty, "checkmobs") and iswalkable(tx, ty, "checkspike") then
           local dst = distmap[tx][ty]
           if dst < bdst then
               cand = {}
@@ -1801,16 +1525,6 @@ end
           if dst == bdst then
               add(cand, i)
           end
-        else
-      if(cantmoveallharm(m.x,m.y))then
-        local dst = distmap[tx][ty]
-        if dst < bdst then
-            cand = {}
-            bdst = dst
-        elseif dst == bdst then
-            add(cand, i)
-        end
-      end
       end
   end
 
@@ -1820,17 +1534,18 @@ end
       if m.spec=="fast" then
         return ai_attac(m)
       else
-        if (m.x == m.tx and m.y == m.ty) and m.task != ai_wonder then
-          m.turns_since_last_seen=0
-            m.task = ai_wonder
-            addfloat("?",m.x*8+2,m.y*8,10)
-
-        end
       return true
       end
   end
 
-
+  if #cand == 0 then
+      if cantmoveallharm then
+          if m.last_safe["lx"] ~= nil then
+              mobwalk(m, m.last_safe["lx"], m.last_safe["ly"])
+          end
+          return true
+      end
+  end
 
   -- Handle fast mobs
 
@@ -1842,7 +1557,7 @@ end
 
 function cantmoveallharm(mx,my)
 	screwed=false
-	if(fget(mget(mx+1,my),1) and fget(mget(mx-1,my),1) and fget(mget(mx,my+1),1) and fget(mget(mx,my-1),1))then
+	if(fget(mget(mx+1,my),1) or fget(mget(mx-1,my),1) or fget(mget(mx,my+1),1) or fget(mget(mx,my-1),1))then
 	screwed=true
 	return screwed
 	end
@@ -1852,14 +1567,13 @@ function pushmob(atkx,atky,defm,dist)
 modif=1
 px=0
 py=0
+
 if dist<0 then
   modif=-1
   dist*=-1
 end
-
-dist-=defm.weight
 push=modif
-
+printh("modif: "..modif,"debugs")
 if atkx == defm.x and atky < defm.y   then
   py=push
 end
@@ -1875,24 +1589,22 @@ end
 if atky== defm.y and atkx  >defm.x   then
   px=-push
 end
-
 for i =0,dist-1	do
   if(iswalkable(defm.x+px,defm.y+py))then
   defm.x+=px
   defm.y+=py
   
-
+  printh("stats: "..px..","..py,"debugs")
 	tile_effect(defm.x,defm.y,defm)
 	end
 end
 
 end
 function cansee(m1,m2)
-  print(m1.name)
  return dist(m1.x,m1.y,m2.x,m2.y)<=m1.los and los(m1.x,m1.y,m2.x,m2.y)
 end
 
---[[ function spawnmobs()
+function spawnmobs()
  
  mobpool={}
  for i=2,#mob_name do
@@ -1928,7 +1640,7 @@ end
    placed+=1
   until placed>=minmons[floor]
  end
-end ]]
+end
 
 function infestroom(r)
  if r.nospawn then return 0 end
@@ -1952,37 +1664,18 @@ function takeitem(itm)
  local i=freeinvslot()
  if i==0 then return false end
  inv[i]=itm
- if itm_type[itm]=="wep" or itm_type[itm]=="arm" then
-  dur[i+2]=itm_statDurability[itm]
- end
  return true
 end
-function get_random_item()
-  return flr(rnd(#itm_name-number_of_non_chest_items))+1
-end
+
 function freeinvslot()
- for i=1,inventorySize do
+ for i=1,6 do
   if not inv[i] then
    return i
   end
  end
  return 0
 end
-function droptile(_x,_y,_tle)
-  mset(_x,_y,_tle)
-  if _tle==106 then
-    positions={0,1,2,3,4,5,6,7}
-    for i=1,4 do
-    pos=flr(rnd(positions))+1
-    del(positions,pos)
-    add(animatedpixles,{x=((i*2)+(_x*8))-1,y=pos+(_y*8),vely=1,ystart=(_y*8)})
-    end
-  end
-  local ifmob=getmob(_x,_y)
-  if ifmob != false then
-    tile_effect(_x,_y,ifmob)
-  end
-end
+
 function makeipool()
  ipool_rar={}
  ipool_com={}
@@ -2068,21 +1761,21 @@ function genfloor(f)
 end
 
 __gfx__
-000000000000000066606660660000006660666066606660aaaaaaaa00aaa00000aaa00000000000000000000000000000aaa000a0aaa0a0a000000055555550
+000000000000000066606660000000006660666066606660aaaaaaaa00aaa00000aaa00000000000000000000000000000aaa000a0aaa0a0a000000055555550
 000000000000000000000000000000000000000000000000aaaaaaaa0a000a000a000a00066666600aaaaaa066666660a0aaa0a000000000a0aa000000000000
-007007000000000060666060606000606066606060000060a000000a0a000a000a000a00060000600a0000a060000060a00000a0a0aaa0a0a0aa0aa055000000
+007007000000000060666060000000006066606060000060a000000a0a000a000a000a00060000600a0000a060000060a00000a0a0aaa0a0a0aa0aa055000000
 00077000000000000000000000000000000000000000000000aa0a0000aaa000a0aaa0a0060000600a0aa0a060000060a00a00a000aaa00000aa0aa055055000
-000770000000000066606660666006600000000060000060a000000a0a00aa00aa00aaa0066666600aaaaaa066666660aaa0aaa0a0aaa0a0a0000aa055055050
+000770000000000066606660000000000000000060000060a000000a0a00aa00aa00aaa0066666600aaaaaa066666660aaa0aaa0a0aaa0a0a0000aa055055050
 007007000005000000000000000000000005000000000000a0a0aa0a0aaaaa000aaaaa000000000000000000000000000000000000aaa000a0aa000055055050
-000000000000000060666060606660600000000060666060a000000a00aaa00000aaa000066666600aaaaaa066666660aaaaaaa0a0aaa0a0a0aa0aa055055050
+000000000000000060666060000000000000000060666060a000000a00aaa00000aaa000066666600aaaaaa066666660aaaaaaa0a0aaa0a0a0aa0aa055055050
 000000000000000000000000000000000000000000000000aaaaaaaa000000000000000000000000000000000000000000000000000000000000000000000000
-00000000000000000000000006666660666666000666666006666600666666006660666066666660000066606660000066666660606660600000666066600000
-00000000000000000000000066666660666666606666666066666660666666606660666066666660000066606660000066666660000000000000666066600000
-00000000000000000000000066666660666666606666666066666660666666606660066066666660000006606600000066666660606660600000066066600000
-00000000000000000000000066600000000066606660000066606660000066606660000000000000000000000000000000000000006660000000000066600000
-00000660666666606600000066600000000066606660666066606660666066606660066066000660660006606600066000000660605550606666666066600660
-00006660666666606660000066600000000066606660666066606660666066606660666066606660666066606660666000006660006660006666666066606660
-00006660666666606660000066600000000066606660666066606660666066606660666066606660666066606660666000006660606660606666666066606660
+00000000000000000000000006666660666666000666666006666600666666006660666066666660000066606660000066666660000066600000666066600000
+00000000000000000000000066666660666666606666666066666660666666606660666066666660000066606660000066666660000066600000666066600000
+00000000000000000000000066666660666666606666666066666660666666606660066066666660000006606600000066666660000066600000066066600000
+00000000000000000000000066600000000066606660000066606660000066606660000000000000000000000000000000000000000066600000000066600000
+00000660666666606600000066600000000066606660666066606660666066606660066066000660660006606600066000000660660066606666666066600660
+00006660666666606660000066600000000066606660666066606660666066606660666066606660666066606660666000006660666066606666666066606660
+00006660666666606660000066600000000066606660666066606660666066606660666066606660666066606660666000006660666066606666666066606660
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00006660066666006660000066600000000066600666666066606660666666006660666066606660666066606660666066606660666000006660666066666660
 00006660666666606660000066600000000066606666666066606660666666606660666066606660666066606660666066606660666000006660666066666660
@@ -2100,33 +1793,33 @@ __gfx__
 00000000000000000000000066666660666066606666666066666660666666606660000000006660000066606660666000000000666000005055000000000000
 00000000000000000000000066666660666066600666666006666600666666006660000000006660000066606660666000000000666000005055055080000008
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000088000088
-06000000000000000000060000000000505050506660666000000000000550000000000000000000000000000000000008822880088228800882288008822880
-60000000060000000000006000000600000000000000000000500500000000500500005005050050005000000000005022822822228228222282282222822822
-66000000660000000000066000000660505050506066606000050000055005000500005005000000000005000050055022222222222222222222222222222222
-00000000000000000000000000000000000000000000000005050000555050000005000000005000000000000000000072222227722222277222222772222227
-66000000660000000000066000000660505050505050505000005050000050500005050000005050000000000000000072722727727227277272272772722727
-00050000000500000005000000050000000000000000000000505000000500000505050005000050000500000055005022222222222222222222222222222222
-60000000600000000000006000000060505050505050505000005000000500000500000005050050000000000555500027222272272222722722227227222272
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000027277272272772722727727227277272
-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002222222200000000aaaaaaaa
-060000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000027222222720000000aaaaaaaa
-666000000000000000000000000000000000000000000000077777700000000000000500000000000000000000000000000002222772277222200000aaaaaa0a
-00000080000000000000000000000000000000000000000075577755077700000500000000000000000000000000000000002222ee22222222220000aaaaa0aa
-000006680000000000000000000000000000000000000000755575550775700000055000000000000000000000000000000222227ee2222722222000aaaa0aa0
-06000000000000000000000000000000000000000000000077777777757777000050050000000000009999000000000000022222e772277222222000a0a0a0a0
-666000000000000000000000000000000000000000000000775757577777770000555000000000000999999000000000000222222e222222222220000a0a0a0a
-000000000000000000000000000000000000000000000000075757500777777000000000000000009999999900000000000222227222222722272000a0aaa00a
-9999999999a99999999999999999a9999999999900000000000000000000000000000000000000099999999990000000000222222772277222272000aaa000aa
-99999999a999999999a99999999999999999a9990000000000000000070000000000000000000099999999999900000000000222222222e222270000000000aa
-9999999999999a99a999999999a999999999999900000000070000007770000000000000000009999999999999900000000000227222eee722070000a0000aa0
-999999999a99999999999a99a999999999a9999900000000000000000000007000000000000009999999999999900000000000222772e77222070000000aa0a0
-999999999999999a9a99999999999a99a9999999000000000000007000000777000000000000099999999999999000000000002222222ee2220700000aa00a00
-99999999999999999999999a9a99999999999a9900000000000000000700000000000000000009999999999999900000000000227e22222722000000a00aa000
-999999999999a999999999999999999a9a9999990000000007000000777000000000000000000099999999999900000000000022e7722772220000000aa00000
-99999999999999999999a999999999999999999a00000000000000000000000000000000000000099999999990000000000000022ee2222220000000a0000000
-00044440000000000000000000000000000000000000000000000000000000000000000000000000999999990000000000000000000000000000000000000000
-00848840000000000000000000000000000000000000000000000000000000000000000000000000099999900000000000000000000000000000000000000000
-00888890000000000000000000000000000000000000000000000000000000000000000000000000009999000000000000000000000000000000000000000000
+06000000000000000000060000000000505050506660666000000000000550000000000000000000000000000000000000000000000000000000000000000000
+60000000060000000000006000000600000000000000000000500500000000500500005005050050005000000000005000500000000000000000000000000000
+66000000660000000000066000000660505050506066606000050000055005000500005005000000000005000050055000000500000000000000000000000000
+00000000000000000000000000000000000000000000000005050000555050000005000000005000000000000000000005000000000000000000000000000000
+66000000660000000000066000000660505050505050505000005050000050500005050000005050000000000000000000055000000000000000000000000000
+0005000000050000000500000005000000000000000000000050500000050000050505000500005000050000005500500050050000aaaaa00000000000000000
+600000006000000000000060000000605050505050505050000050000005000005000000050500500000000005555000005550000aaaaaaaa000000000aaaa00
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa0aaaaaaaa00000aaaaaaa0
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00aaaaaaaaaaaaaaaaaaaaa
+06000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaa
+66600000000000000000000000000000000000000000000007777770000000000000000000000000000000000000000000000000aaaaaaaaaaaaaaaaaaaaaa0a
+00000080000000000000000000000000000000000000000075577755077700000000000000000000000000000000000000000000aaaaaaaaaaaaaaaaaaaaa0aa
+000006680000000000000000000000000000000000000000755575550775700000000000000000000000000000000000000000000aaaaaaaaaaaaaaaaaaa0aa0
+0600000000000000000000000000000000000000000000007777777775777700000000000000000000000000000000000000000000aaaaaaaaaaaaaaa0a0a0a0
+66600000000000000000000000000000000000000000000077575757777777000000000000000000000000000000000000000000a00aaa0a0a0a0a0a0a0a0a0a
+00000000000000000000000000000000000000000000000007575750077777700000000000000000000000000000000000000000a0000aaaa0a0a0a0a0aaa00a
+9999999999a99999999999999999a999999999990000000000000000000000000000000000000000000000000000000000000000aa000000aaaaaaaaaaa000aa
+99999999a999999999a99999999999999999a9990000000000000000000000000000000000000000000000000000000000000000aa000aa000000000000000aa
+9999999999999a99a999999999a999999999999900000000000000000000000000000000000000000000000000000000000000000aa0000aaaaaaaaaa0000aa0
+999999999a99999999999a99a999999999a9999900000000000000000000000000000000000000000000000000000000000000000a0aa00000000000000aa0a0
+999999999999999a9a99999999999a99a9999999000000000000000000000000000000000000000000000000000000000000000000a00aa0000000000aa00a00
+99999999999999999999999a9a99999999999a990000000000000000000000000000000000000000000000000000000000000000000aa00aaaaaaaaaa00aa000
+999999999999a999999999999999999a9a999999000000000000000000000000000000000000000000000000000000000000000000000aa0000000000aa00000
+99999999999999999999a999999999999999999a00000000000000000000000000000000000000000000000000000000000000000000000aaaaaaaaaa0000000
+00044440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00848840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00888890000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00888890000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00888800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00888800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -2134,7 +1827,7 @@ __gfx__
 00888800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 20202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020
 20202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020
-2010101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f01010101010101010101010101020
+20f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f01010101010101010101010101020
 20f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f01010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
@@ -2144,11 +1837,6 @@ __gfx__
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-20101010101010c41010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-201010101010c5d5e510101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-201010101010c6d6e610101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
@@ -2160,7 +1848,12 @@ __gfx__
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
 20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
-20101010101010f010101010101010202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e020
+20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
+20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
+20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
+20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
+20101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020
+2010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e020
 2010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e020
 20202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020
 20202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020
@@ -2327,33 +2020,33 @@ __label__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 __gff__
-0000070700050303030103010307020005050505050502050505050505050505050505050505050505050505050505050505050505050505050505050505000000000000000004040000000000000000020000000000000000000000000101010000000000000000000000000001030103000000000000000000000000000000
+0000050500050303030103010307020005050505050502050505050505050505050505050505050505050505050505050505050505050505050505050505000000000000000004040000000000010101020000000000000000000000000101010000000000000000000000000001030103000000000000000000000000000000
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 __map__
 0202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202
-020f01030101034701025601024701020201010101010d010d01010101565002020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020ff4f4f4f4f4f4f4f4010101010102020f0101010101010101010101010102
-02010102010102010102010103010102020101010101020102010101010142020201010101010101010101e80101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-02010102014a020101034601020101020201e4010101020102070101e001500202010101e8010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-021d0202031d021d02021d02021d0302020c01010101020102085650505050020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-02e001010101010101014a4a4a4a010202020202020202010202020202020202020101010101010101e8010101010102020101010101010101010101010101020201010101010101010101010101010202010101e8e8e8e8e8e8e8010101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-020101010101010101464a01014a0102020101010101010f0101010103e00c020201010101010101010101010101010202010101f4f4f4f40101010101010102020101020202020d0202020201010102020101e8e8e8e8e8e8e8e8010101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-0201010101010101010102020d020202020d02020202020102020202020202020201010101010c01010c01010101010202010101f40101f4f4010101010101020201010201010201020ce40201010102020101e8e8e8e8e8e8e8e8e80101010202f4f4f4f4f4f4f4f4f401010101010202010101010101010101010101010102
-0250500101010101010102010101010202010101010102010201010101010a02020101010101010101010c010101010202010101f4f4f40101f40101010101020201010201ec0d010202010201010102020101e8e8e8e8e8e8e8e8e8010101020201010101010101010101010101010202010101010101010101010101010102
-0250500101010101010102010101010202010101010102010201010101010a0202010101e801ec0101010101e80101020201010101f4f40101f401010101010202010102010102010201010201010102020101e8e8e8e8e8e8e8e8e8010101020201010101010101010101010101010202010101010101010101010101010102
-0202020202020202020202010101010202010101010102010201e00101010102020101010101010101010101e8010102020101010101f4f4f4f40101010101020201010202020201020102020101e40202010101e8e8e8e8e8e8e8e8010101020201010101010101010101010101010202010101010101010101010101010102
-020c01010a02e0010101020101010102020101010101020102010101010101020201010c0101010101010101010101020201010101010101010101010101010202010102020101010d010202010101020201010101e8e8e8e8e8e801010101020201010101010101010101010101010202010101010101010101010101010102
-020101010102015001010d010101010202010101560102010201020201010102020101010101010c010101ec010101020201010101010101010101010101010202010102020102020202020201010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
-0207010101020101010102010101010202010101010102010201020101010102020101e80101010101010101010101020201010101010101010101010101010202010102e40de4020202020201010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
-02080101010d01010101020101010e02020e0101010102010d01020101e0010202010101010101010101010101010e0202010101010101010101010101010e020201010202e40202020202e401010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e02
+020f0102010102470102560102470102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102
+0201010201010201010201010201010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+02016002014a0201010246010201010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+020d02020d02020d02020d02020d020202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+024601f40101010101014a4a4a4a010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+02010101e001010101464a01014a01020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101d801010101010101020201010101010101010101010101010202010101010101010101010101010102
+0201010101010101010102020d0202020201010101010101e401010101010102020101010101010101cc01010101010202010101010101d0010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+0201016001010101010102010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+02010101010101010101020101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101d4d40101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+0202020202020202020202010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+020c01010a020101010102010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+020101010102010101010d010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+0207010101020101e00102010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+02080101010d01010101020101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e0202010101010101010101010101010e02
 0202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202
 0202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202
 020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102020f0101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
-02010101010101f8010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
+020101010101dc01010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
 0201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102
